@@ -12,11 +12,11 @@
     </parent>
 
     <groupId>pl.put.poznan</groupId>
-    <artifactId>io-project-architecture</artifactId>
+    <artifactId>text-transformer</artifactId>
     <version>0.1</version>
 
 	<properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
     </properties>
 
     
