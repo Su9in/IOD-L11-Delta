@@ -1,7 +1,5 @@
 package pl.put.poznan.transformer.logic;
 
-import javafx.scene.text.Text;
-
 /**
  * This is the class that takes care of transforming provided text using a set of transforms
  */
