@@ -1,0 +1,7 @@
+pl\put\poznan\transformer\logic\LowercaseDecorator.class
+pl\put\poznan\transformer\logic\TextContainer.class
+pl\put\poznan\transformer\logic\TextDecorator.class
+pl\put\poznan\transformer\logic\Transformer.class
+pl\put\poznan\transformer\logic\ReverseDecorator.class
+pl\put\poznan\transformer\logic\UppercaseDecorator.class
+pl\put\poznan\transformer\logic\CapitalizeDecorator.class

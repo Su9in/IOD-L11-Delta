@@ -1,7 +1,9 @@
 package pl.put.poznan.transformer.logic;
 
+import javafx.scene.text.Text;
+
 /**
- * This is just an example to show that the logic should be outside the REST service.
+ * This is the class that takes care of transforming provided text using a set of transforms
  */
 public class TextTransformer {
 
@@ -11,8 +13,27 @@ public class TextTransformer {
         this.transforms = transforms;
     }
 
+    /**
+     * Performs all transformations specified for this object
+     * @param text the string of text to be transformed
+     * @return text after all transformations
+     */
     public String transform(String text){
-        // of course, normally it would do something based on the transforms
-        return text.toUpperCase();
+        TextContainer container = new TextContainer(text);
+        Transformer transformer;
+        String newText = text;
+
+        for (String t : transforms){
+            transformer = switch (t) {
+                case "upper" -> new UppercaseDecorator(container);
+                case "lower" -> new LowercaseDecorator(container);
+                case "capitalize" -> new CapitalizeDecorator(container);
+                case "reverse" -> new ReverseDecorator(container);
+                default -> container;
+            };
+            newText = transformer.transformText();
+        }
+
+        return newText;
     }
 }

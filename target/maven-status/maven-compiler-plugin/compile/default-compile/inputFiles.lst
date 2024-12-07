@@ -1,3 +1,10 @@
-/Users/mochodek/Documents/Dydaktyka/Wyklady/IO/Laboratory classes/projekt/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/app/TextTransformerApplication.java
-/Users/mochodek/Documents/Dydaktyka/Wyklady/IO/Laboratory classes/projekt/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/logic/TextTransformer.java
-/Users/mochodek/Documents/Dydaktyka/Wyklady/IO/Laboratory classes/projekt/ioprojectarchitecture/src/main/java/pl/put/poznan/transformer/rest/TextTransformerController.java
+C:\Users\alicj\Desktop\uni\inzynieria_oprogramowania\projekt\IOD-L11-Delta\src\main\java\pl\put\poznan\transformer\app\TextTransformerApplication.java
+C:\Users\alicj\Desktop\uni\inzynieria_oprogramowania\projekt\IOD-L11-Delta\src\main\java\pl\put\poznan\transformer\logic\CapitalizeDecorator.java
+C:\Users\alicj\Desktop\uni\inzynieria_oprogramowania\projekt\IOD-L11-Delta\src\main\java\pl\put\poznan\transformer\logic\LowercaseDecorator.java
+C:\Users\alicj\Desktop\uni\inzynieria_oprogramowania\projekt\IOD-L11-Delta\src\main\java\pl\put\poznan\transformer\logic\ReverseDecorator.java
+C:\Users\alicj\Desktop\uni\inzynieria_oprogramowania\projekt\IOD-L11-Delta\src\main\java\pl\put\poznan\transformer\logic\TextContainer.java
+C:\Users\alicj\Desktop\uni\inzynieria_oprogramowania\projekt\IOD-L11-Delta\src\main\java\pl\put\poznan\transformer\logic\TextDecorator.java
+C:\Users\alicj\Desktop\uni\inzynieria_oprogramowania\projekt\IOD-L11-Delta\src\main\java\pl\put\poznan\transformer\logic\TextTransformer.java
+C:\Users\alicj\Desktop\uni\inzynieria_oprogramowania\projekt\IOD-L11-Delta\src\main\java\pl\put\poznan\transformer\logic\Transformer.java
+C:\Users\alicj\Desktop\uni\inzynieria_oprogramowania\projekt\IOD-L11-Delta\src\main\java\pl\put\poznan\transformer\logic\UppercaseDecorator.java
+C:\Users\alicj\Desktop\uni\inzynieria_oprogramowania\projekt\IOD-L11-Delta\src\main\java\pl\put\poznan\transformer\rest\TextTransformerController.java
