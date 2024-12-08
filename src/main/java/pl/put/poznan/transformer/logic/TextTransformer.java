@@ -1,5 +1,7 @@
 package pl.put.poznan.transformer.logic;
 
+import java.util.Dictionary;
+
 /**
  * This is the class that takes care of transforming provided text using a set of transforms
  */
@@ -10,6 +12,8 @@ public class TextTransformer {
     public TextTransformer(String[] transforms){
         this.transforms = transforms;
     }
+
+    public static final NumberDictionary numberDictionary = new NumberDictionary("src/main/resources/numbersDictionarySource.csv");
 
     /**
      * Performs all transformations specified for this object
