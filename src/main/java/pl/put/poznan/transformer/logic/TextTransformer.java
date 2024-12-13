@@ -31,6 +31,7 @@ public class TextTransformer {
                 case "lower" -> new LowercaseDecorator(container);
                 case "capitalize" -> new CapitalizeDecorator(container);
                 case "reverse" -> new ReverseDecorator(container);
+                case "numbersToText" -> new NumberToTextDecorator(container);
                 default -> container;
             };
             newText = transformer.transformText();

@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-
+/**
+ * Class that tests does numberDictionary class works correct
+ */
 public class NumberDictionaryTest {
     NumberDictionary testDictionary = new NumberDictionary("src/main/resources/testDictionary.csv");
 
