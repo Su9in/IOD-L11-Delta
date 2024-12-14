@@ -7,10 +7,19 @@ package pl.put.poznan.transformer.logic;
  */
 
 public class ReverseDecorator extends TextDecorator  {
+    /**
+     * Constructs a ReverseDecorator with the specified transformer.
+     * @param transformer the Transformer object to be decorated
+     */
     public ReverseDecorator(Transformer transformer) {
         super(transformer);
     }
 
+    /**
+     * Transforms the text by reversing the order of all characters while preserving
+     * the case of each letter at its original position.
+     * @return the transformed text with reversed character order
+     */
     @Override
     public String transformText() {
         String text = super.transformText();

@@ -8,12 +8,23 @@ import javax.xml.crypto.dsig.Transform;
  */
 
 public class TextDecorator implements Transformer {
-    protected Transformer transformer; // a reference to the "component"
+    /**
+     * A reference to the "component" being decorated.
+     */
+    protected Transformer transformer;
 
+    /**
+     * Constructs a TextDecorator with the specified transformer.
+     * @param transformer the Transformer object to be decorated
+     */
     public TextDecorator(Transformer transformer) {
         this.transformer = transformer;
     }
 
+    /**
+     * Transforms the text by delegating the call to the wrapped transformer.
+     * @return the transformed text
+     */
     @Override
     public String transformText() {
         return transformer.transformText();

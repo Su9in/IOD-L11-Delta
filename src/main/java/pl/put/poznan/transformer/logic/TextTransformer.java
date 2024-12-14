@@ -4,9 +4,15 @@ package pl.put.poznan.transformer.logic;
  * This is the class that takes care of transforming provided text using a set of transforms
  */
 public class TextTransformer {
-
+    /**
+     * Field for storing all transformations to be applied with current instance of TextTransformer class
+     */
     private final String[] transforms;
 
+    /**
+     * TextTransformer class constructor
+     * @param transforms list of strings representing transformations
+     */
     public TextTransformer(String[] transforms){
         this.transforms = transforms;
     }

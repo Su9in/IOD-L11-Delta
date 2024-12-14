@@ -8,16 +8,18 @@ import java.util.Arrays;
  */
 
 public class CapitalizeDecorator extends TextDecorator {
+    /**
+     * Constructs a CapitalizeDecorator with the specified transformer.
+     * @param transformer the Transformer object to be decorated
+     */
     public CapitalizeDecorator(Transformer transformer) {
         super(transformer);
     }
 
     /**
-     * Goes through every word in a given String, capitalizes the first letter, and then puts
-     * it all back together into a single String.
+     * Goes through every word in a given String, capitalizes the first letter, and then puts it all back together into a single String.
      * @return capitalized text
      */
-
     @Override
     public String transformText() {
         String[] words = transformer.transformText().split("\\s");
