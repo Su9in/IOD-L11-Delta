@@ -15,6 +15,8 @@ public class TextTransformer {
 
     public static final NumberDictionary numberDictionary = new NumberDictionary("src/main/resources/numbersDictionarySource.csv");
 
+    public static final WordsAndAbbrDictionary wordsAndAbbrDictionary = new WordsAndAbbrDictionary("src/main/resources/wordsAndAbbrDictionary.csv");
+
     /**
      * Performs all transformations specified for this object
      * @param text the string of text to be transformed
