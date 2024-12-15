@@ -35,6 +35,7 @@ public class TextTransformer {
                 default -> container;
             };
             newText = transformer.transformText();
+            container = new TextContainer(newText);
         }
 
         return newText;
