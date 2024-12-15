@@ -2,7 +2,6 @@ package pl.put.poznan.transformer.logic;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,7 +17,7 @@ public class JsonParser {
      * @param jsonString the JSON string to parse
      * @return a pretty-printed JSON string, or an error message if parsing fails
      */
-    public Map parseJson(String jsonString) {
+    public Map ParseJson(String jsonString) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             Map<String, Object> jsonMap = objectMapper.readValue(jsonString, Map.class);
@@ -29,25 +28,15 @@ public class JsonParser {
         }
     }
 
-    public Object getFieldValue(Map<String, Object> obj, String fieldName) {
+    public String[] GetFieldValue(Map<String, Object> obj, String fieldName) {
         try {
             Object fieldValue = obj.get(fieldName);
-
-            if (fieldValue instanceof ArrayList) {
-                ArrayList<?> list = (ArrayList<?>) fieldValue;
-                if (list.isEmpty()) {
-                    return "List is empty";
-                }
-                return list;
+            if (fieldValue instanceof String) {
+                return ((String) fieldValue).split(",");
             }
-            else if (fieldValue instanceof String) {
-                return fieldValue;
-            }
-            else {
-                return "Incorrect field";
-            }
+            return new String[]{"Incorrect field"};
         } catch (Exception e) {
-            return "Invalid parameter name: " + e.getMessage();
+            return new String[]{"Invalid parameter name: " + e.getMessage()};
         }
     }
 
