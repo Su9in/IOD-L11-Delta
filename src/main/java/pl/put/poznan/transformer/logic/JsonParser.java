@@ -1,5 +1,6 @@
 package pl.put.poznan.transformer.logic;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.HashMap;
@@ -38,6 +39,14 @@ public class JsonParser {
         } catch (Exception e) {
             return new String[]{"Invalid parameter name: " + e.getMessage()};
         }
+    }
+
+
+    public String ResToJson(String res) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Map<String, String> mapRes = new HashMap<>();
+        mapRes.put("result", res);
+        return objectMapper.writeValueAsString(mapRes);
     }
 
 }
