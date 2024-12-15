@@ -1,4 +1,5 @@
 package pl.put.poznan.transformer.rest;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -21,15 +22,15 @@ public class TextTransformerController {
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public String get(@RequestParam(value = "text", defaultValue = "LoReM IpSuM!") String text,
-                      @RequestParam(value="transforms", defaultValue="upper,reverse") String[] transforms) {
-
+                      @RequestParam(value="transforms", defaultValue="upper,reverse") String[] transforms) throws JsonProcessingException {
+        JsonParser parser = new JsonParser();
         // log the parameters
         logger.debug(text);
         logger.debug(Arrays.toString(transforms));
 
         // perform the transformation, you should run your logic here, below is just a silly example
         TextTransformer transformer = new TextTransformer(transforms);
-        return transformer.transform(text);
+        return parser.ResToJson(transformer.transform(text));
     }
 
 /*    @RequestMapping(method = RequestMethod.POST, produces = "application/json")
@@ -46,7 +47,7 @@ public class TextTransformerController {
     }
 */
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
-    public String post(@RequestBody String jsonBody) {
+    public String post(@RequestBody String jsonBody) throws JsonProcessingException {
 
         JsonParser parser = new JsonParser();
         Map body = parser.ParseJson(jsonBody);
@@ -59,7 +60,8 @@ public class TextTransformerController {
 
         // perform the transformation, you should run your logic here, below is just a silly example
         TextTransformer transformer = new TextTransformer(transforms);
-        return transformer.transform(text);
+
+        return parser.ResToJson(transformer.transform(text));
     }
 
 
