@@ -21,7 +21,7 @@ public class TextTransformerController {
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public String get(@RequestParam(value = "text", defaultValue = "LoReM IpSuM!") String text,
-                      @RequestParam(value="transforms", defaultValue="upper,escape") String[] transforms) {
+                      @RequestParam(value="transforms", defaultValue="upper,reverse") String[] transforms) {
 
         // log the parameters
         logger.debug(text);
