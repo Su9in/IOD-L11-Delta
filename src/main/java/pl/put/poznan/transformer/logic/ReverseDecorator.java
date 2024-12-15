@@ -1,5 +1,7 @@
 package pl.put.poznan.transformer.logic;
 
+import static java.lang.Character.isUpperCase;
+
 /**
  * This is a part of the decorator pattern used in this project (concrete decorator).
  * This class is responsible for reversing the order of all characters in a String, while
@@ -28,7 +30,7 @@ public class ReverseDecorator extends TextDecorator  {
 
         // Keeping record of positions in text that contained an upperCase letter
         for (int i = 0; i < text.length(); i++) {
-            if (Character.isAlphabetic(text.charAt(i)) && text.charAt(i) == Character.toUpperCase(text.charAt(i))) {
+            if (isUpperCase(text.charAt(i))) {
                 upperIndices[i] = 1;
             }
             else {
