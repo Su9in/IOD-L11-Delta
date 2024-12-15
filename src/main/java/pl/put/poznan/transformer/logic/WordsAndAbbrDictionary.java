@@ -7,8 +7,6 @@ import java.util.Scanner;
 
 /**
  *  Dictionaries for converting between words and their abbreviations.
- *  Dictionary elements looks like this '<key> <value>' where '<key>' is a word, and '<value>' is an abbreviation.
- *  Every element should be separated with ",".
  */
 
 public class WordsAndAbbrDictionary {
