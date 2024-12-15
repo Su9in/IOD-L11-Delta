@@ -6,10 +6,18 @@ package pl.put.poznan.transformer.logic;
  */
 
 public class LowercaseDecorator extends TextDecorator {
+    /**
+     * Constructs a LowercaseDecorator with the specified transformer.
+     * @param transformer the Transformer object to be decorated
+     */
     public LowercaseDecorator(Transformer transformer) {
         super(transformer);
     }
 
+    /**
+     * Transforms the text by converting all letters to lowercase.
+     * @return the transformed text in lowercase
+     */
     @Override
     public String transformText() {
         return transformer.transformText().toLowerCase();

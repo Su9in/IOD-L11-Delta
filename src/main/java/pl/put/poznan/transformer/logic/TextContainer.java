@@ -6,13 +6,23 @@ package pl.put.poznan.transformer.logic;
  */
 
 public class TextContainer implements Transformer {
-
+    /**
+     * The text held by this container.
+     */
     private String text;
 
+    /**
+     * Constructs a TextContainer with the specified text.
+     * @param text the text to be held by this container
+     */
     public TextContainer(String text) {
         this.text = text;
     }
 
+    /**
+     * Returns the text held by this container.
+     * @return text held by the container
+     */
     @Override
     public String transformText() {
         return this.text;
