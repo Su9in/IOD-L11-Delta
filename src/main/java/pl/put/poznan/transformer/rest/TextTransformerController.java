@@ -61,7 +61,15 @@ public class TextTransformerController {
     @PostMapping("/")
     public ModelAndView indexPost(String text, String[] transforms) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("processedText", text.toUpperCase());
+
+        // log the parameters
+        logger.debug(text);
+        logger.debug(Arrays.toString(transforms));
+
+        // perform the transformation, you should run your logic here, below is just a silly example
+        TextTransformer transformer = new TextTransformer(transforms);
+
+        modelAndView.addObject("processedText", transformer.transform(text));
         modelAndView.addObject("transforms", String.join(", ", transforms));
         modelAndView.setViewName("success");
         return modelAndView;
