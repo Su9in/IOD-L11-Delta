@@ -10,17 +10,24 @@ public class TextTransformer {
      * Field for storing all transformations to be applied with current instance of TextTransformer class
      */
     private final String[] transforms;
+    /**
+     * Dictionary containing numbers and their names in Polish
+     */
+    public NumberDictionary numberDictionary;
+    /**
+     * Dictionary containing words and abbreviations in Polish
+     */
+    public WordsAndAbbrDictionary wordsAndAbbrDictionary;
 
     /**
      * TextTransformer class constructor
      * @param transforms list of strings representing transformations
      */
-    public TextTransformer(String[] transforms){
+    public TextTransformer(String[] transforms, NumberDictionary numberDictionary, WordsAndAbbrDictionary wordsAndAbbrDictionary) {
         this.transforms = transforms;
+        this.numberDictionary = numberDictionary;
+        this.wordsAndAbbrDictionary = wordsAndAbbrDictionary;
     }
-
-    public static final NumberDictionary numberDictionary = new NumberDictionary("src/main/resources/numbersDictionarySource.csv");
-    public static final WordsAndAbbrDictionary wordsAndAbbrDictionary = new WordsAndAbbrDictionary("src/main/resources/wordsAndAbbrDictionary.csv");
 
     /**
      * Performs all transformations specified for this object
@@ -38,9 +45,9 @@ public class TextTransformer {
                 case "lower" -> new LowercaseDecorator(container);
                 case "capitalize" -> new CapitalizeDecorator(container);
                 case "reverse" -> new ReverseDecorator(container);
-                case "numbersToText" -> new NumberToTextDecorator(container);
-                case "wordToAbbr" -> new WordToAbbrDecorator(container);
-                case "abbrToWord" -> new AbbrToWordDecorator(container);
+                case "numbersToText" -> new NumberToTextDecorator(container, numberDictionary);
+                case "wordToAbbr" -> new WordToAbbrDecorator(container, wordsAndAbbrDictionary);
+                case "abbrToWord" -> new AbbrToWordDecorator(container, wordsAndAbbrDictionary);
                 default -> container;
             };
             newText = transformer.transformText();

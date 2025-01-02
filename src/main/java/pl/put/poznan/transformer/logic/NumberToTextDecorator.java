@@ -1,6 +1,6 @@
 package pl.put.poznan.transformer.logic;
 
-import static pl.put.poznan.transformer.logic.TextTransformer.numberDictionary;
+//import pl.put.poznan.transformer.logic.TextTransformer.numberDictionary;
 
 /**
  * This is NumberToTextClass which transforms numbers (integers and floats smaller or equal 1000 and floats with max two decimal places)
@@ -8,12 +8,14 @@ import static pl.put.poznan.transformer.logic.TextTransformer.numberDictionary;
 * */
 
 public class NumberToTextDecorator extends TextDecorator  {
-
     /**
      * Class constructor
-     * @param transformer Inherited class
+     * @param transformer the Transformer object to be decorated
+     * @param numberDictionary the dictionary containing numbers written in Polish
      */
-    public NumberToTextDecorator(Transformer transformer) { super(transformer); }
+    public NumberToTextDecorator(Transformer transformer, NumberDictionary numberDictionary) {
+        super(transformer, numberDictionary);
+    }
 
     /**
      * Function to check if given string is a integer

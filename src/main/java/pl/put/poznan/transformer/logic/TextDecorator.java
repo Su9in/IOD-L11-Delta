@@ -12,6 +12,8 @@ public class TextDecorator implements Transformer {
      * A reference to the "component" being decorated.
      */
     protected Transformer transformer;
+    public NumberDictionary numberDictionary;
+    public WordsAndAbbrDictionary wordsAndAbbrDictionary;
 
     /**
      * Constructs a TextDecorator with the specified transformer.
@@ -19,6 +21,26 @@ public class TextDecorator implements Transformer {
      */
     public TextDecorator(Transformer transformer) {
         this.transformer = transformer;
+    }
+
+    /**
+     * Constructs a TextDecorator with the specified transformer and number dictionary.
+     * @param transformer the Transformer object to be decorated
+     * @param numberDictionary the dictionary with numbers written in Polish
+     */
+    public TextDecorator(Transformer transformer, NumberDictionary numberDictionary) {
+        this.transformer = transformer;
+        this.numberDictionary = numberDictionary;
+    }
+
+    /**
+     * Constructs a TextDecorator with the specified transformer and words and abbreviations dictionary.
+     * @param transformer the Transformer object to be decorated
+     * @param wordsAndAbbrDictionary the dictionary with words and abbreviations
+     */
+    public TextDecorator(Transformer transformer, WordsAndAbbrDictionary wordsAndAbbrDictionary) {
+        this.transformer = transformer;
+        this.wordsAndAbbrDictionary = wordsAndAbbrDictionary;
     }
 
     /**
