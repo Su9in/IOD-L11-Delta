@@ -18,7 +18,7 @@ class ReverseDecoratorTest {
     }
 
     @Test
-    void testCapitalize() {
+    void testReverse() {
         assertEquals(expected, decorator.transformText());
     }
 }
