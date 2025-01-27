@@ -43,9 +43,9 @@ public class AbbrToWordDecorator extends TextDecorator {
                         else charBeforeAbbr = 'X';
 
                         if (
-                                (index == 0 && charAfterAbbr == ' ') ||              // abbr at the beginning of a text
+                                (index == 0 && (charAfterAbbr == ' ' || charAfterAbbr == ',')) ||              // abbr at the beginning of a text
                                         (index > 0 &&                                // abbr at the end of a sentence
-                                                (charAfterAbbr == '.' || charAfterAbbr == '?'  || charAfterAbbr == '!' ) &&
+                                                (charAfterAbbr == '.' || charAfterAbbr == ',' || charAfterAbbr == '?'  || charAfterAbbr == '!' ) &&
                                                 charBeforeAbbr == ' '
                                         ) ||
                                         (index > 0 && charBeforeAbbr == ' ' && charAfterAbbr == ' ')     // abbr in the middle of a text

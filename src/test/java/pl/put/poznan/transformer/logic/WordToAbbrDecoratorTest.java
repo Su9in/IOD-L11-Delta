@@ -10,8 +10,8 @@ public class WordToAbbrDecoratorTest {
     TextContainer container;
     WordToAbbrDecorator decorator;
 
-    String text = "Profesory to między innymi na przykład ulica tak zwany profesor";
-    String expected = "Profesory to m.in. np. ul. tzw. prof.";
+    String text = "Profesory między innymi, to między innymi! na przykład? ulica tak zwany profesor";
+    String expected = "Profesory m.in., to m.in.! np.? ul. tzw. prof.";
 
     @BeforeEach
     void setUp() {
