@@ -1,6 +1,6 @@
 package pl.put.poznan.transformer.logic;
 
-//import pl.put.poznan.transformer.logic.TextTransformer.numberDictionary;
+import static pl.put.poznan.transformer.logic.TextTransformer.numberDictionary;
 
 /**
  * This is NumberToTextClass which transforms numbers (integers and floats smaller or equal 1000 and floats with max two decimal places)
@@ -8,14 +8,12 @@ package pl.put.poznan.transformer.logic;
 * */
 
 public class NumberToTextDecorator extends TextDecorator  {
+
     /**
      * Class constructor
-     * @param transformer the Transformer object to be decorated
-     * @param numberDictionary the dictionary containing numbers written in Polish
+     * @param transformer Inherited class
      */
-    public NumberToTextDecorator(Transformer transformer, NumberDictionary numberDictionary) {
-        super(transformer, numberDictionary);
-    }
+    public NumberToTextDecorator(Transformer transformer) { super(transformer); }
 
     /**
      * Function to check if given string is a integer
@@ -111,10 +109,24 @@ public class NumberToTextDecorator extends TextDecorator  {
         String[] letters;
 
         for (String word : words) {
-            if (isInt(word)){
-                word = transformInt(word);
+            String lastChar = word.substring(word.length()-1, word.length());
+            String word2 = word.substring(0, word.length()-1);
+            boolean isUsedWord2 = false;
+            if (isInt(word) || isInt(word2)){
+                if (isInt(word2) && !isInt(word)) {
+                    word = word2;
+                    word = transformInt(word);
+                    word+=lastChar;
+                }
+                else{
+                    word = transformInt(word);
+                }
             }
-            if (isFloat(word)) {
+            else if (isFloat(word) || isFloat(word2)) {
+                if (isFloat(word2) && !isFloat(word)) {
+                    word = word2;
+                    isUsedWord2 = true;
+                }
                 String[] splittedNumber = word.split("\\.");
                 int wholeNum = Integer.parseInt(splittedNumber[0]);
                 if(wholeNum <= 1000) {
@@ -150,6 +162,10 @@ public class NumberToTextDecorator extends TextDecorator  {
 
                     }
                 }
+            }
+            if (isUsedWord2) {
+                word+=lastChar;
+                isUsedWord2 = false;
             }
             result += word + " ";
         }
