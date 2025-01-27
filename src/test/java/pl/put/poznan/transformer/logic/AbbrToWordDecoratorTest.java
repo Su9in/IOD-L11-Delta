@@ -9,8 +9,8 @@ public class AbbrToWordDecoratorTest {
     TextContainer container;
     AbbrToWordDecorator decorator;
 
-    String text = "Lek. to m.in. np. ul. tzw. bigos.";
-    String expected = "Lekarz to między innymi na przykład ulica tak zwany bigos.";
+    String text = "Lek., to m.in.! np. ul.? tzw. bigos.";
+    String expected = "Lekarz, to między innymi! na przykład ulica? tak zwany bigos.";
 
     @BeforeEach
     void setUp() {

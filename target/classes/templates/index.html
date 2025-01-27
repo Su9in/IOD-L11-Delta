@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Transformer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #333;
+    }
+    input[type="text"] {
+      width: 95%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+    #selectedItems {
+      margin-top: 20px;
+    }
+    h2 {
+      font-size: 18px;
+      color: #444;
+      margin-bottom: 10px;
+    }
+    ul.order-list {
+      list-style: none;
+      padding: 0;
+    }
+    ul.order-list li {
+      background: #e9ecef;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    input[type="submit"] {
+      background-color: #007bff;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 15px;
+      cursor: pointer;
+      width: 100%;
+    }
+    input[type="submit"]:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+<form id="textForm" action="/" method="POST">
+  <label>Input your text</label>
+  <input type="text" id="textInput" name="text"><br>
+  <label for="transformsPicker">Choose transforms</label>
+  <select id="transformsPicker" name="transformsPicker" size="5" multiple>
+    <option value="upper">UPPER</option>
+    <option value="lower">lower</option>
+    <option value="capitalize">Capitalize</option>
+    <option value="reverse">esrever</option>
+    <option value="numbersToText">Number to text</option>
+  </select>
+  <div id="selectedItems">
+    <h2>Selected Items (in order):</h2>
+    <ul class="order-list" id="orderList"></ul>
+  </div>
+  <input type="hidden" name="transforms" id="transforms">
+  <input type="submit" id="submitButton" value="Submit" disabled>
+</form>
+
+<script>
+  const selectElement = document.getElementById("transformsPicker");
+  const orderList = document.getElementById("orderList");
+  const hiddenInput = document.getElementById("transforms");
+  const textInput = document.getElementById("textInput");
+  const submitButton = document.getElementById("submitButton");
+  const selectedOrder = [];
+
+  selectElement.addEventListener("change", function () {
+    for (const option of selectElement.options) {
+      if (option.selected && !selectedOrder.includes(option.value)) {
+        selectedOrder.push(option.value);
+      } else if (!option.selected && selectedOrder.includes(option.value)) {
+        const index = selectedOrder.indexOf(option.value);
+        if (index > -1) {
+          selectedOrder.splice(index, 1);
+        }
+      }
+    }
+    renderOrderList();
+    updateHiddenInput();
+    validateForm();
+  });
+
+  textInput.addEventListener("input", validateForm);
+
+  function renderOrderList() {
+    orderList.innerHTML = "";
+    selectedOrder.forEach((item) => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      orderList.appendChild(li);
+    });
+  }
+
+  function updateHiddenInput() {
+    hiddenInput.value = selectedOrder.join(",");
+  }
+
+  function validateForm() {
+    submitButton.disabled = !(textInput.value.trim() && selectedOrder.length > 0);
+  }
+</script>
+</body>
+</html>
