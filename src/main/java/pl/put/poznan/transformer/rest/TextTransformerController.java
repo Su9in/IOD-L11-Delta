@@ -5,7 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.put.poznan.transformer.logic.JsonParser;
+import pl.put.poznan.transformer.logic.NumberDictionary;
 import pl.put.poznan.transformer.logic.TextTransformer;
+import pl.put.poznan.transformer.logic.WordsAndAbbrDictionary;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -16,6 +18,8 @@ import java.util.Map;
 public class TextTransformerController {
 
     private static final Logger logger = LoggerFactory.getLogger(TextTransformerController.class);
+    public static final NumberDictionary numberDictionary = new NumberDictionary("src/main/resources/numbersDictionarySource.csv");
+    public static final WordsAndAbbrDictionary wordsAndAbbrDictionary = new WordsAndAbbrDictionary("src/main/resources/wordsAndAbbrDictionary.csv");
 
     @GetMapping(value = "/transform", produces = "application/json")
     public String get(@RequestParam(value = "text", defaultValue = "LoReM IpSuM!") String text,
@@ -26,7 +30,7 @@ public class TextTransformerController {
         logger.debug(Arrays.toString(transforms));
 
         // perform the transformation, you should run your logic here, below is just a silly example
-        TextTransformer transformer = new TextTransformer(transforms);
+        TextTransformer transformer = new TextTransformer(transforms, numberDictionary, wordsAndAbbrDictionary);
         return parser.ResToJson(transformer.transform(text));
     }
 
@@ -44,7 +48,7 @@ public class TextTransformerController {
         logger.debug(Arrays.toString(transforms));
 
         // perform the transformation, you should run your logic here, below is just a silly example
-        TextTransformer transformer = new TextTransformer(transforms);
+        TextTransformer transformer = new TextTransformer(transforms, numberDictionary, wordsAndAbbrDictionary);
 
         return parser.ResToJson(transformer.transform(text));
     }
@@ -67,7 +71,7 @@ public class TextTransformerController {
         logger.debug(Arrays.toString(transforms));
 
         // perform the transformation, you should run your logic here, below is just a silly example
-        TextTransformer transformer = new TextTransformer(transforms);
+        TextTransformer transformer = new TextTransformer(transforms, numberDictionary, wordsAndAbbrDictionary);
 
         modelAndView.addObject("processedText", transformer.transform(text));
         modelAndView.addObject("transforms", String.join(", ", transforms));

@@ -1,6 +1,6 @@
 package pl.put.poznan.transformer.logic;
 
-import static pl.put.poznan.transformer.logic.TextTransformer.wordsAndAbbrDictionary;
+//import static pl.put.poznan.transformer.logic.TextTransformer.wordsAndAbbrDictionary;
 
 /**
  * This is a part of the decorator pattern used in this project (concrete decorator).
@@ -11,9 +11,10 @@ public class WordToAbbrDecorator extends TextDecorator{
     /**
      * Constructs a WordToAbbrDecorator with the specified transformer.
      * @param transformer the Transformer object to be decorated
+     * @param dictionary the dictionary with words and abbreviations
      */
-    public WordToAbbrDecorator(Transformer transformer) {
-        super(transformer);
+    public WordToAbbrDecorator(Transformer transformer, WordsAndAbbrDictionary dictionary) {
+        super(transformer, dictionary);
     }
 
     /**
